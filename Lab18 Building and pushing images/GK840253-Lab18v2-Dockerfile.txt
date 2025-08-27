@@ -1,0 +1,14 @@
+# Specify Base Image  Apache2
+FROM httpd:2.4
+
+# Copy HTML files into the Apache web root
+COPY ./ /usr/local/apache2/htdocs/
+
+# Install Dependencies and Run Configuration
+RUN echo "ServerName localhost" >> /usr/local/apache2/conf/httpd.conf
+
+# Define Container Startup Command
+CMD ["httpd-foreground"]
+
+# Expose default Apache port
+EXPOSE 80
